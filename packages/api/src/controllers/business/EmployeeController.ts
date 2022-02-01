@@ -2,14 +2,14 @@ import { Controller } from "@tsed/di";
 import { UseBeforeEach } from "@tsed/platform-middlewares";
 import { BodyParams, Context, PathParams } from "@tsed/platform-params";
 import { Delete, Put } from "@tsed/schema";
-import { IsAuth } from "middlewares/index";
+import { IsAuth } from "#middlewares/index";
 import { UPDATE_EMPLOYEE_SCHEMA, FIRE_EMPLOYEE_SCHEMA } from "@snailycad/schemas";
 import { NotFound } from "@tsed/exceptions";
-import { prisma } from "lib/prisma";
+import { prisma } from "#lib/prisma";
 import { EmployeeAsEnum, WhitelistStatus } from ".prisma/client";
-import { validateBusinessAcceptance } from "utils/businesses";
-import { validateSchema } from "lib/validateSchema";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
+import { validateBusinessAcceptance } from "#utils/businesses";
+import { validateSchema } from "#lib/validateSchema";
+import { ExtendedBadRequest } from "#exceptions//ExtendedBadRequest";
 
 @UseBeforeEach(IsAuth)
 @Controller("/businesses/employees")

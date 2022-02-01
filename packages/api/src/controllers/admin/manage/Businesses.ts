@@ -3,9 +3,9 @@ import { NotFound } from "@tsed/exceptions";
 import { UseBeforeEach } from "@tsed/platform-middlewares";
 import { BodyParams, Context, PathParams } from "@tsed/platform-params";
 import { Delete, Get, Put } from "@tsed/schema";
-import { userProperties } from "lib/auth";
-import { prisma } from "lib/prisma";
-import { IsAuth } from "middlewares/index";
+import { userProperties } from "#lib/auth";
+import { prisma } from "#lib/prisma";
+import { IsAuth } from "#middlewares/index";
 
 const businessInclude = {
   citizen: {

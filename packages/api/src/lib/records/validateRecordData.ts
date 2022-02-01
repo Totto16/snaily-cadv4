@@ -1,6 +1,6 @@
 import type { PenalCode, WarningApplicable, WarningNotApplicable } from "@prisma/client";
 import { BadRequest, NotFound } from "@tsed/exceptions";
-import { prisma } from "lib/prisma";
+import { prisma } from "#lib/prisma";
 
 interface Options {
   penalCodeId: string;

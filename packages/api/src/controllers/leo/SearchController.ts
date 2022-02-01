@@ -2,11 +2,11 @@ import { Controller, UseBeforeEach } from "@tsed/common";
 import { Post } from "@tsed/schema";
 import { NotFound } from "@tsed/exceptions";
 import { BodyParams, QueryParams } from "@tsed/platform-params";
-import { prisma } from "lib/prisma";
-import { IsAuth } from "middlewares/index";
-import { ActiveOfficer } from "middlewares/ActiveOfficer";
-import { leoProperties } from "lib/officer";
-import { citizenInclude } from "controllers/citizen/CitizenController";
+import { prisma } from "#lib/prisma";
+import { IsAuth } from "#middlewares/index";
+import { ActiveOfficer } from "#middlewares/ActiveOfficer";
+import { leoProperties } from "#lib/officer";
+import { citizenInclude } from "#controllers/citizen/CitizenController";
 
 export const citizenSearchInclude = {
   ...citizenInclude,

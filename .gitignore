@@ -2,8 +2,10 @@ node_modules
 .next
 yarn-error.log
 dist
-.env
+.env*
+!.env.example
 .data
+.data__testing
 
 packages/api/public/**/*.png
 packages/api/public/**/*.svg
@@ -25,3 +27,6 @@ packages/api/public/**/*.jpeg
 packages/client/public/favicon.png
 
 .husky/_
+
+coverage
+coverage/*

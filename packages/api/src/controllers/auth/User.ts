@@ -3,18 +3,18 @@ import { Controller } from "@tsed/di";
 import { UseBefore } from "@tsed/platform-middlewares";
 import { Delete, Patch, Post } from "@tsed/schema";
 import { Cookie } from "@snailycad/config";
-import { prisma } from "lib/prisma";
-import { IsAuth } from "middlewares/IsAuth";
-import { setCookie } from "utils/setCookie";
+import { prisma } from "#lib/prisma";
+import { IsAuth } from "#middlewares/IsAuth";
+import { setCookie } from "#utils/setCookie";
 import type { User } from ".prisma/client";
 import { NotFound } from "@tsed/exceptions";
 import { CHANGE_PASSWORD_SCHEMA } from "@snailycad/schemas";
 import { compareSync, genSaltSync, hashSync } from "bcrypt";
-import { userProperties } from "lib/auth";
-import { validateSchema } from "lib/validateSchema";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
-import { Socket } from "services/SocketService";
-import { handleStartEndOfficerLog } from "lib/leo/handleStartEndOfficerLog";
+import { userProperties } from "#lib/auth";
+import { validateSchema } from "#lib/validateSchema";
+import { ExtendedBadRequest } from "#exceptions//ExtendedBadRequest";
+import { Socket } from "#services/SocketService";
+import { handleStartEndOfficerLog } from "#lib/leo/handleStartEndOfficerLog";
 import { ShouldDoType } from "@prisma/client";
 
 @Controller("/user")

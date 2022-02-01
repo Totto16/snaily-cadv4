@@ -3,9 +3,9 @@ import { BodyParams, Context, PathParams, UseBeforeEach } from "@tsed/common";
 import { Controller } from "@tsed/di";
 import { BadRequest, NotFound } from "@tsed/exceptions";
 import { Get, Post } from "@tsed/schema";
-import { citizenInclude } from "controllers/citizen/CitizenController";
-import { prisma } from "lib/prisma";
-import { IsAuth } from "middlewares/IsAuth";
+import { citizenInclude } from "#controllers/citizen/CitizenController";
+import { prisma } from "#lib/prisma";
+import { IsAuth } from "#middlewares/IsAuth";
 
 export const expungementRequestInclude = {
   citizen: true,

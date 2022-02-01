@@ -3,11 +3,11 @@ import { Delete, Post, Put } from "@tsed/schema";
 import { CREATE_911_CALL_EVENT } from "@snailycad/schemas";
 import { BodyParams, PathParams } from "@tsed/platform-params";
 import { NotFound } from "@tsed/exceptions";
-import { prisma } from "lib/prisma";
-import { Socket } from "services/SocketService";
+import { prisma } from "#lib/prisma";
+import { Socket } from "#services/SocketService";
 import { UseBeforeEach } from "@tsed/platform-middlewares";
-import { IsAuth } from "middlewares/index";
-import { validateSchema } from "lib/validateSchema";
+import { IsAuth } from "#middlewares/index";
+import { validateSchema } from "#lib/validateSchema";
 
 @Controller("/911-calls/events")
 @UseBeforeEach(IsAuth)

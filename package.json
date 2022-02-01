@@ -13,7 +13,8 @@
     "lint:fix": "eslint . --ext .ts,.js,.tsx,.jsx --fix",
     "prepare": "husky install",
     "bump-version": "node scripts/bump-version.mjs",
-    "postinstall": "husky install"
+    "postinstall": "husky install",
+    "test": "docker compose -f test.docker-compose.yml up"
   },
   "license": "MIT",
   "devDependencies": {

@@ -2,13 +2,13 @@ import { ValueType, PrismaClient } from ".prisma/client";
 import { CREATE_PENAL_CODE_SCHEMA, validate, VALUE_SCHEMA } from "@snailycad/schemas";
 import { Get, Controller, PathParams, UseBeforeEach, BodyParams, QueryParams } from "@tsed/common";
 import { Delete, JsonRequestBody, Patch, Post, Put } from "@tsed/schema";
-import { prisma } from "lib/prisma";
-import { IsValidPath } from "middlewares/ValidPath";
+import { prisma } from "#lib/prisma";
+import { IsValidPath } from "#middlewares/ValidPath";
 import { BadRequest, NotFound } from "@tsed/exceptions";
-import { IsAuth } from "middlewares/index";
-import { validateSchema } from "lib/validateSchema";
+import { IsAuth } from "#middlewares/index";
+import { validateSchema } from "#lib/validateSchema";
 import { typeHandlers } from "./values/Import";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
+import { ExtendedBadRequest } from "#exceptions//ExtendedBadRequest";
 
 export type NameType = Exclude<
   keyof PrismaClient,

@@ -2,13 +2,13 @@ import { Controller, UseBeforeEach, BodyParams } from "@tsed/common";
 import { Delete, Get } from "@tsed/schema";
 import { PathParams } from "@tsed/platform-params";
 import { NotFound } from "@tsed/exceptions";
-import { prisma } from "lib/prisma";
-import { IsAuth } from "middlewares/index";
-import { leoProperties } from "lib/officer";
+import { prisma } from "#lib/prisma";
+import { IsAuth } from "#middlewares/index";
+import { leoProperties } from "#lib/officer";
 import { ReleaseType } from "@prisma/client";
-import { validateSchema } from "lib/validateSchema";
+import { validateSchema } from "#lib/validateSchema";
 import { RELEASE_CITIZEN_SCHEMA } from "@snailycad/schemas";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
+import { ExtendedBadRequest } from "#exceptions//ExtendedBadRequest";
 
 const citizenInclude = {
   Record: {

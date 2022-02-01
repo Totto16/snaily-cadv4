@@ -13,14 +13,14 @@ import { Controller } from "@tsed/di";
 import { BadRequest, NotFound } from "@tsed/exceptions";
 import { BodyParams, Context, PathParams } from "@tsed/platform-params";
 import { Post, Put } from "@tsed/schema";
-import { prisma } from "lib/prisma";
+import { prisma } from "#lib/prisma";
 import { callInclude, findUnit } from "./911-calls/Calls911Controller";
-import { leoProperties, unitProperties } from "lib/officer";
-import { getWebhookData, sendDiscordWebhook } from "lib/discord";
-import { Socket } from "services/SocketService";
+import { leoProperties, unitProperties } from "#lib/officer";
+import { getWebhookData, sendDiscordWebhook } from "#lib/discord";
+import { Socket } from "#services/SocketService";
 import type { APIWebhook } from "discord-api-types";
-import { IsAuth } from "middlewares/index";
-import { ActiveOfficer } from "middlewares/ActiveOfficer";
+import { IsAuth } from "#middlewares/index";
+import { ActiveOfficer } from "#middlewares/ActiveOfficer";
 import {
   Citizen,
   CombinedLeoUnit,
@@ -29,9 +29,9 @@ import {
   Value,
   WhitelistStatus,
 } from "@prisma/client";
-import { generateCallsign } from "utils/callsign";
-import { validateSchema } from "lib/validateSchema";
-import { handleStartEndOfficerLog } from "lib/leo/handleStartEndOfficerLog";
+import { generateCallsign } from "#utils/callsign";
+import { validateSchema } from "#lib/validateSchema";
+import { handleStartEndOfficerLog } from "#lib/leo/handleStartEndOfficerLog";
 
 @Controller("/dispatch/status")
 @UseBeforeEach(IsAuth)

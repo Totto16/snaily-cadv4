@@ -3,13 +3,13 @@ import { Delete, Get, Post, Put } from "@tsed/schema";
 import { CREATE_BOLO_SCHEMA } from "@snailycad/schemas";
 import { BodyParams, Context, PathParams } from "@tsed/platform-params";
 import { NotFound } from "@tsed/exceptions";
-import { prisma } from "lib/prisma";
+import { prisma } from "#lib/prisma";
 import { Use, UseBeforeEach } from "@tsed/platform-middlewares";
-import { IsAuth } from "middlewares/index";
-import { ActiveOfficer } from "middlewares/ActiveOfficer";
-import { Socket } from "services/SocketService";
-import { leoProperties } from "lib/officer";
-import { validateSchema } from "lib/validateSchema";
+import { IsAuth } from "#middlewares/index";
+import { ActiveOfficer } from "#middlewares/ActiveOfficer";
+import { Socket } from "#services/SocketService";
+import { leoProperties } from "#lib/officer";
+import { validateSchema } from "#lib/validateSchema";
 import type { BoloType } from "@prisma/client";
 
 @Controller("/bolos")

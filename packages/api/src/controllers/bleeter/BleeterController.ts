@@ -15,10 +15,10 @@ import {
 } from "@tsed/common";
 import { NotFound } from "@tsed/exceptions";
 import { Delete, Put } from "@tsed/schema";
-import { prisma } from "lib/prisma";
-import { IsAuth } from "middlewares/index";
-import { validateSchema } from "lib/validateSchema";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
+import { prisma } from "#lib/prisma";
+import { IsAuth } from "#middlewares/index";
+import { validateSchema } from "#lib/validateSchema";
+import { ExtendedBadRequest } from "#exceptions//ExtendedBadRequest";
 
 @UseBeforeEach(IsAuth)
 @Controller("/bleeter")

@@ -4,9 +4,9 @@ import { BadRequest, NotFound } from "@tsed/exceptions";
 import { UseBeforeEach } from "@tsed/platform-middlewares";
 import { BodyParams, PathParams } from "@tsed/platform-params";
 import { Get, Put } from "@tsed/schema";
-import { expungementRequestInclude } from "controllers/court/CourtController";
-import { prisma } from "lib/prisma";
-import { IsAuth } from "middlewares/index";
+import { expungementRequestInclude } from "#controllers/court/CourtController";
+import { prisma } from "#lib/prisma";
+import { IsAuth } from "#middlewares/index";
 
 @UseBeforeEach(IsAuth)
 @Controller("/admin/manage/expungement-requests")

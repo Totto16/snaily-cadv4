@@ -3,19 +3,19 @@ import { UseBeforeEach, Context, MultipartFile, PlatformMulterFile } from "@tsed
 import { Controller } from "@tsed/di";
 import { Delete, Get, JsonRequestBody, Post, Put } from "@tsed/schema";
 import { BodyParams, PathParams } from "@tsed/platform-params";
-import { prisma } from "lib/prisma";
-import { IsAuth } from "middlewares/IsAuth";
+import { prisma } from "#lib/prisma";
+import { IsAuth } from "#middlewares/IsAuth";
 import { BadRequest, NotFound } from "@tsed/exceptions";
 import { CREATE_CITIZEN_SCHEMA, validate } from "@snailycad/schemas";
 import fs from "node:fs";
 import { AllowedFileExtension, allowedFileExtensions } from "@snailycad/config";
 import { Feature, cad, MiscCadSettings } from ".prisma/client";
-import { leoProperties } from "lib/officer";
-import { validateImgurURL } from "utils/image";
-import { generateString } from "utils/generateString";
+import { leoProperties } from "#lib/officer";
+import { validateImgurURL } from "#utils/image";
+import { generateString } from "#utils/generateString";
 import type { Citizen, DriversLicenseCategoryValue, User } from "@prisma/client";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
-import { canManageInvariant, userProperties } from "lib/auth";
+import { ExtendedBadRequest } from "#exceptions//ExtendedBadRequest";
+import { canManageInvariant, userProperties } from "#lib/auth";
 
 export const citizenInclude = {
   user: { select: userProperties },

@@ -3,7 +3,7 @@ import type { Req } from "@tsed/common";
 import { NotFound, Unauthorized } from "@tsed/exceptions";
 import { parse } from "cookie";
 import { Cookie } from "@snailycad/config";
-import { verifyJWT } from "utils/jwt";
+import { verifyJWT } from "#utils/jwt";
 import { prisma } from "./prisma";
 import type { User } from ".prisma/client";
 import { WhitelistStatus } from "@prisma/client";

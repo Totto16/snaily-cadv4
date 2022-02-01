@@ -7,11 +7,11 @@ import { BadRequest } from "@tsed/exceptions";
 import { Delete, Post } from "@tsed/schema";
 import { compareSync } from "bcrypt";
 import qrcode from "qrcode";
-import { prisma } from "lib/prisma";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
-import { IsAuth } from "middlewares/IsAuth";
-import { encryptValue } from "lib/auth/crypto";
-import { validateUser2FA } from "lib/auth/2fa";
+import { prisma } from "#lib/prisma";
+import { ExtendedBadRequest } from "#exceptions/ExtendedBadRequest";
+import { IsAuth } from "#middlewares/IsAuth";
+import { encryptValue } from "#lib/auth/crypto";
+import { validateUser2FA } from "#lib/auth/2fa";
 
 @Controller("/2fa")
 @UseBeforeEach(IsAuth)

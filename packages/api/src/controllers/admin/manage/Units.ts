@@ -9,13 +9,13 @@ import {
   linkDivisionsToOfficer,
   unlinkDivisionsFromOfficer,
   validateMaxDivisionsPerOfficer,
-} from "controllers/leo/LeoController";
-import { leoProperties, unitProperties } from "lib/officer";
-import { prisma } from "lib/prisma";
-import { validateSchema } from "lib/validateSchema";
-import { IsAuth } from "middlewares/index";
-import { Socket } from "services/SocketService";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
+} from "#controllers/leo/LeoController";
+import { leoProperties, unitProperties } from "#lib/officer";
+import { prisma } from "#lib/prisma";
+import { validateSchema } from "#lib/validateSchema";
+import { IsAuth } from "#middlewares/index";
+import { Socket } from "#services/SocketService";
+import { ExtendedBadRequest } from "#exceptions//ExtendedBadRequest";
 
 const ACTIONS = ["SET_DEPARTMENT_DEFAULT", "SET_DEPARTMENT_NULL", "DELETE_OFFICER"] as const;
 type Action = typeof ACTIONS[number];

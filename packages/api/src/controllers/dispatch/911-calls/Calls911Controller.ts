@@ -3,13 +3,13 @@ import { Delete, Get, Post, Put } from "@tsed/schema";
 import { CREATE_911_CALL, LINK_INCIDENT_TO_CALL } from "@snailycad/schemas";
 import { BodyParams, Context, PathParams, QueryParams } from "@tsed/platform-params";
 import { BadRequest, NotFound } from "@tsed/exceptions";
-import { prisma } from "lib/prisma";
-import { Socket } from "services/SocketService";
+import { prisma } from "#lib/prisma";
+import { Socket } from "#services/SocketService";
 import { UseBeforeEach } from "@tsed/platform-middlewares";
-import { IsAuth } from "middlewares/index";
+import { IsAuth } from "#middlewares/index";
 import { ShouldDoType, CombinedLeoUnit, Officer, EmsFdDeputy } from ".prisma/client";
-import { unitProperties, leoProperties } from "lib/officer";
-import { validateSchema } from "lib/validateSchema";
+import { unitProperties, leoProperties } from "#lib/officer";
+import { validateSchema } from "#lib/validateSchema";
 import type { DepartmentValue, DivisionValue, User } from "@prisma/client";
 
 const assignedUnitsInclude = {

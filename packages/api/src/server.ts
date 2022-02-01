@@ -1,3 +1,4 @@
+import "@tsed/platform-express";
 import { join } from "node:path";
 import process from "node:process";
 import { Configuration, Inject, PlatformApplication, Response } from "@tsed/common";
@@ -6,7 +7,7 @@ import "@tsed/socketio";
 import compress from "compression";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { IsEnabled } from "middlewares/IsEnabled";
+import { IsEnabled } from "#middlewares/IsEnabled";
 
 const rootDir = __dirname;
 

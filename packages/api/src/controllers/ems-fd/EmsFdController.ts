@@ -4,16 +4,16 @@ import { Delete, Get, Post, Put } from "@tsed/schema";
 import { CREATE_OFFICER_SCHEMA, MEDICAL_RECORD_SCHEMA } from "@snailycad/schemas";
 import { BodyParams, Context, PathParams } from "@tsed/platform-params";
 import { BadRequest, NotFound } from "@tsed/exceptions";
-import { prisma } from "lib/prisma";
+import { prisma } from "#lib/prisma";
 import { ShouldDoType, User } from ".prisma/client";
 import { AllowedFileExtension, allowedFileExtensions } from "@snailycad/config";
-import { IsAuth } from "middlewares/index";
-import { ActiveDeputy } from "middlewares/ActiveDeputy";
+import { IsAuth } from "#middlewares/index";
+import { ActiveDeputy } from "#middlewares/ActiveDeputy";
 import fs from "node:fs";
-import { unitProperties } from "lib/officer";
-import { validateImgurURL } from "utils/image";
-import { validateSchema } from "lib/validateSchema";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
+import { unitProperties } from "#lib/officer";
+import { validateImgurURL } from "#utils/image";
+import { validateSchema } from "#lib/validateSchema";
+import { ExtendedBadRequest } from "#exceptions//ExtendedBadRequest";
 
 @Controller("/ems-fd")
 @UseBeforeEach(IsAuth)

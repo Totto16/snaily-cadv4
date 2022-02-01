@@ -2,13 +2,13 @@ import { Controller, UseBefore, UseBeforeEach } from "@tsed/common";
 import { Delete, Get, Post, Put } from "@tsed/schema";
 import { NotFound } from "@tsed/exceptions";
 import { BodyParams, Context, PathParams } from "@tsed/platform-params";
-import { prisma } from "lib/prisma";
-import { IsAuth } from "middlewares/index";
-import { leoProperties } from "lib/officer";
+import { prisma } from "#lib/prisma";
+import { IsAuth } from "#middlewares/index";
+import { leoProperties } from "#lib/officer";
 import { LEO_INCIDENT_SCHEMA } from "@snailycad/schemas";
-import { ActiveOfficer } from "middlewares/ActiveOfficer";
+import { ActiveOfficer } from "#middlewares/ActiveOfficer";
 import type { Officer } from ".prisma/client";
-import { validateSchema } from "lib/validateSchema";
+import { validateSchema } from "#lib/validateSchema";
 
 @Controller("/incidents")
 @UseBeforeEach(IsAuth)

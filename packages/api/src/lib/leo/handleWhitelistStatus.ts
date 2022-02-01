@@ -1,6 +1,6 @@
 import { Officer, LeoWhitelistStatus, WhitelistStatus } from "@prisma/client";
-import { prisma } from "lib/prisma";
-import { ExtendedNotFound } from "src/exceptions/ExtendedNotFound";
+import { prisma } from "#lib/prisma";
+import { ExtendedNotFound } from "#exceptions//ExtendedNotFound";
 
 /**
  * this function handles the addition of the `whitelistStatus` to an officer

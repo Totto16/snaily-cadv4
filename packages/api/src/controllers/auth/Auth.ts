@@ -3,16 +3,16 @@ import { User, WhitelistStatus, Rank } from ".prisma/client";
 import { Controller, BodyParams, Post, Res, Response } from "@tsed/common";
 import { hashSync, genSaltSync, compareSync } from "bcrypt";
 import { BadRequest } from "@tsed/exceptions";
-import { prisma } from "lib/prisma";
-import { setCookie } from "utils/setCookie";
-import { signJWT } from "utils/jwt";
+import { prisma } from "#lib/prisma";
+import { setCookie } from "#utils/setCookie";
+import { signJWT } from "#utils/jwt";
 import { Cookie } from "@snailycad/config";
-import { findOrCreateCAD } from "lib/cad";
+import { findOrCreateCAD } from "#lib/cad";
 import { AUTH_SCHEMA } from "@snailycad/schemas";
-import { validateSchema } from "lib/validateSchema";
-import { ExtendedNotFound } from "src/exceptions/ExtendedNotFound";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
-import { validateUser2FA } from "lib/auth/2fa";
+import { validateSchema } from "#lib/validateSchema";
+import { ExtendedNotFound } from "#exceptions//ExtendedNotFound";
+import { ExtendedBadRequest } from "#exceptions//ExtendedBadRequest";
+import { validateUser2FA } from "#lib/auth/2fa";
 
 // expire after 5 hours
 export const AUTH_TOKEN_EXPIRES_MS = 60 * 60 * 1000 * 5;

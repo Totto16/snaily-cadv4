@@ -7,10 +7,10 @@ import {
   PlatformMulterFile,
 } from "@tsed/common";
 import { Post } from "@tsed/schema";
-import { prisma } from "lib/prisma";
-import { IsValidPath } from "middlewares/ValidPath";
+import { prisma } from "#lib/prisma";
+import { IsValidPath } from "#middlewares/ValidPath";
 import { BadRequest } from "@tsed/exceptions";
-import { IsAuth } from "middlewares/index";
+import { IsAuth } from "#middlewares/index";
 
 import {
   HASH_SCHEMA_ARR,
@@ -29,7 +29,7 @@ import type {
   StatusValueType,
   ValueLicenseType,
 } from "@prisma/client";
-import { validateSchema } from "lib/validateSchema";
+import { validateSchema } from "#lib/validateSchema";
 
 @Controller("/admin/values/import/:path")
 @UseBeforeEach(IsAuth, IsValidPath)

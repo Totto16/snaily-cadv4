@@ -5,11 +5,11 @@ import { UseBeforeEach, Context, BodyParams, PathParams } from "@tsed/common";
 import { Controller } from "@tsed/di";
 import { NotFound } from "@tsed/exceptions";
 import { Post, Delete, Put } from "@tsed/schema";
-import { canManageInvariant } from "lib/auth";
-import { prisma } from "lib/prisma";
-import { validateSchema } from "lib/validateSchema";
-import { IsAuth } from "middlewares/IsAuth";
-import { generateString } from "utils/generateString";
+import { canManageInvariant } from "#lib/auth";
+import { prisma } from "#lib/prisma";
+import { validateSchema } from "#lib/validateSchema";
+import { IsAuth } from "#middlewares/IsAuth";
+import { generateString } from "#utils/generateString";
 
 @Controller("/weapons")
 @UseBeforeEach(IsAuth)

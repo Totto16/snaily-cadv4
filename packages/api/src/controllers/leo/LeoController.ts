@@ -10,20 +10,20 @@ import { Delete, Get, Post, Put } from "@tsed/schema";
 import { CREATE_OFFICER_SCHEMA, LICENSE_SCHEMA } from "@snailycad/schemas";
 import { BodyParams, Context, PathParams } from "@tsed/platform-params";
 import { BadRequest, NotFound } from "@tsed/exceptions";
-import { prisma } from "lib/prisma";
+import { prisma } from "#lib/prisma";
 import { Officer, ShouldDoType, User } from ".prisma/client";
 import { AllowedFileExtension, allowedFileExtensions } from "@snailycad/config";
-import { IsAuth } from "middlewares/index";
-import { ActiveOfficer } from "middlewares/ActiveOfficer";
-import { Socket } from "services/SocketService";
+import { IsAuth } from "#middlewares/index";
+import { ActiveOfficer } from "#middlewares/ActiveOfficer";
+import { Socket } from "#services/SocketService";
 import fs from "node:fs";
-import { leoProperties } from "lib/officer";
-import { citizenInclude } from "controllers/citizen/CitizenController";
-import { validateImgurURL } from "utils/image";
+import { leoProperties } from "#lib/officer";
+import { citizenInclude } from "#controllers/citizen/CitizenController";
+import { validateImgurURL } from "#utils/image";
 import type { DivisionValue, MiscCadSettings } from "@prisma/client";
-import { validateSchema } from "lib/validateSchema";
-import { ExtendedBadRequest } from "src/exceptions/ExtendedBadRequest";
-import { handleWhitelistStatus } from "lib/leo/handleWhitelistStatus";
+import { validateSchema } from "#lib/validateSchema";
+import { ExtendedBadRequest } from "#exceptions//ExtendedBadRequest";
+import { handleWhitelistStatus } from "#lib/leo/handleWhitelistStatus";
 
 @Controller("/leo")
 @UseBeforeEach(IsAuth)

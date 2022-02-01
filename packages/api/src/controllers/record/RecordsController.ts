@@ -6,15 +6,15 @@ import {
 } from "@snailycad/schemas";
 import { BodyParams, Context, PathParams } from "@tsed/platform-params";
 import { NotFound } from "@tsed/exceptions";
-import { prisma } from "lib/prisma";
+import { prisma } from "#lib/prisma";
 import { UseBefore, UseBeforeEach } from "@tsed/platform-middlewares";
-import { ActiveOfficer } from "middlewares/ActiveOfficer";
+import { ActiveOfficer } from "#middlewares/ActiveOfficer";
 import { Controller } from "@tsed/di";
-import { IsAuth } from "middlewares/index";
+import { IsAuth } from "#middlewares/index";
 import type { RecordType, Violation, WarrantStatus } from "@prisma/client";
-import { validateSchema } from "lib/validateSchema";
-import { validateRecordData } from "lib/records/validateRecordData";
-import { leoProperties } from "lib/officer";
+import { validateSchema } from "#lib/validateSchema";
+import { validateRecordData } from "#lib/records/validateRecordData";
+import { leoProperties } from "#lib/officer";
 
 @UseBeforeEach(IsAuth, ActiveOfficer)
 @Controller("/records")
