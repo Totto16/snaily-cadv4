@@ -26,5 +26,8 @@ jobs:
       - name: Build schemas
         run: "yarn workspace @snailycad/schemas build"
 
+      - name: Create docker network
+        run: "docker network create cad_web"
+
       - name: Run tests
         run: "yarn test"
