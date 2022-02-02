@@ -4,8 +4,12 @@ services:
   postgres:
     container_name: "snaily-cad-postgres__testing"
     image: postgres
-    env_file:
-      - .env.test
+    environment:
+      - NODE_ENV=test
+      - POSTGRES_PASSWORD="admin"
+      - POSTGRES_USER="admin"
+      - DB_HOST=postgres
+      - JWT_SECRET="##{[{#{}{[dqklsjdhoqçsè!d§àç"
     ports:
       - "5433:5432"
     networks:
@@ -25,8 +29,13 @@ services:
       - 8080
     volumes:
       - .:/srv/api
-    env_file:
-      - .env.test
+    environment:
+      - NODE_ENV=test
+      - POSTGRES_PASSWORD="admin"
+      - POSTGRES_USER="admin"
+      - DB_HOST=postgres
+      - JWT_SECRET="##{[{#{}{[dqklsjdhoqçsè!d§àç"
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${DB_HOST}:${DB_PORT}/${POSTGRES_DB}?sslmode=prefer
     working_dir: /srv/api
     depends_on:
       - postgres
