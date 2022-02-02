@@ -30,4 +30,4 @@ jobs:
         run: "docker network create cad_web"
 
       - name: Run tests
-        run: "yarn test"
+        run: "docker compose -f test.docker-compose.yml up --exit-code-from api"
