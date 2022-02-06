@@ -1,12 +1,12 @@
 import { Controller } from "@tsed/di";
 import { Get, Post } from "@tsed/schema";
-import { prisma } from "lib/prisma";
+import { prisma } from "#lib/prisma";
 import { VEHICLE_SCHEMA_ARR } from "@snailycad/schemas/dist/admin/import/vehicles";
 import { BodyParams, MultipartFile, PlatformMulterFile } from "@tsed/common";
-import { parseImportFile } from "utils/file";
-import { validateSchema } from "lib/validateSchema";
-import { generateString } from "utils/generateString";
-import { citizenInclude } from "controllers/citizen/CitizenController";
+import { parseImportFile } from "#utils/file";
+import { validateSchema } from "#lib/validateSchema";
+import { generateString } from "#utils/generateString";
+import { citizenInclude } from "#controllers/citizen/CitizenController";
 
 const vehiclesInclude = { ...citizenInclude.vehicles.include, citizen: true };
 

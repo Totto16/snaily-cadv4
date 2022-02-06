@@ -1,10 +1,10 @@
 import { Controller } from "@tsed/di";
 import { Post } from "@tsed/schema";
-import { prisma } from "lib/prisma";
+import { prisma } from "#lib/prisma";
 import { BodyParams, MultipartFile, PlatformMulterFile } from "@tsed/common";
-import { parseImportFile } from "utils/file";
-import { validateSchema } from "lib/validateSchema";
-import { generateString } from "utils/generateString";
+import { parseImportFile } from "#utils/file";
+import { validateSchema } from "#lib/validateSchema";
+import { generateString } from "#utils/generateString";
 import { IMPORT_CITIZENS_ARR } from "@snailycad/schemas";
 
 @Controller("/admin/import/citizens")

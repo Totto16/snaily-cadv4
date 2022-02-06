@@ -6,6 +6,7 @@ import { Server } from "../server";
 describe("Authentication", () => {
   // bootstrap your Server to load all endpoints before run your test
   let request: SuperTest.SuperTest<SuperTest.Test>;
+  jest.setTimeout(10000);
 
   beforeAll(PlatformTest.bootstrap(Server));
   beforeAll(() => {
