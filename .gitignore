@@ -30,3 +30,4 @@ packages/client/public/favicon.png
 
 coverage
 coverage/*
+.turbo

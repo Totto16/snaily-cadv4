@@ -3,18 +3,13 @@ import * as React from "react";
 import { getSessionUser } from "lib/auth";
 import { getTranslations } from "lib/getTranslation";
 import type { GetServerSideProps } from "next";
-import type { Citizen, User } from "types/prisma";
+import type { Citizen, User } from "@snailycad/types";
 import { AdminLayout } from "components/admin/AdminLayout";
 import { requestAll } from "lib/utils";
 import { Title } from "components/shared/Title";
 import { AllCitizensTab } from "components/admin/manage/citizens/AllCitizensTab";
-import { TabList } from "components/shared/TabList";
-import dynamic from "next/dynamic";
-
-const AdvancedCitizensTab = dynamic(
-  async () =>
-    (await import("components/admin/manage/citizens/AdvancedCitizensTab")).AdvancedCitizensTab,
-);
+import { TabList, TabsContent } from "components/shared/TabList";
+import Link from "next/link";
 
 interface Props {
   citizens: (Citizen & { user: User })[];
@@ -34,9 +29,18 @@ export default function ManageCitizens({ citizens: data }: Props) {
 
       <h1 className="text-3xl font-semibold mb-3">{t("MANAGE_CITIZENS")}</h1>
 
-      <TabList tabs={["All Citizens", "Advanced"]}>
+      <TabList
+        tabs={[
+          { name: "All Citizens", value: "allCitizens" },
+          { name: "Advanced", value: "advanced" },
+        ]}
+      >
         <AllCitizensTab setCitizens={setCitizens} citizens={citizens} />
-        <AdvancedCitizensTab onSuccess={(data) => setCitizens((p) => [...data, ...p])} />
+        <TabsContent value="advanced">
+          <Link href="/admin/import/citizens">
+            <a className="underline">This has been moved to its own page.</a>
+          </Link>
+        </TabsContent>
       </TabList>
     </AdminLayout>
   );

@@ -14,7 +14,7 @@ import {
   DivisionValue,
   VehicleValue,
   Value,
-} from "types/prisma";
+} from "@snailycad/types";
 
 const TYPE_LABELS = {
   [StatusValueType.SITUATION_CODE]: "Situation Code",
@@ -25,6 +25,10 @@ export function useTableDataOfType(type: ValueType) {
   const common = useTranslations("Common");
 
   function get(value: TValue) {
+    // state mismatch prevention
+    const valueType = "type" in value ? value.type : value.value.type;
+    if (valueType !== type) return;
+
     switch (type) {
       case "CODES_10": {
         const v = value as StatusValue;
@@ -49,7 +53,7 @@ export function useTableDataOfType(type: ValueType) {
 
         return {
           callsign: v.callsign || common("none"),
-          department: v.department?.value?.value ?? common("none"),
+          department: v.department.value.value,
         };
       }
       case "VEHICLE":
@@ -61,7 +65,7 @@ export function useTableDataOfType(type: ValueType) {
         };
       }
       case "LICENSE": {
-        const v = value as Value;
+        const v = value as Value<ValueType.LICENSE>;
 
         return {
           licenseType: v.licenseType ? LICENSE_LABELS[v.licenseType] : common("none"),

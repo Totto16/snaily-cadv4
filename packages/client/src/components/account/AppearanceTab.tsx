@@ -1,5 +1,4 @@
-import * as React from "react";
-import { Tab } from "@headlessui/react";
+import { TabsContent } from "components/shared/TabList";
 import { Button } from "components/Button";
 import { FormField } from "components/form/FormField";
 import { Toggle } from "components/form/Toggle";
@@ -7,12 +6,18 @@ import { useAuth } from "context/AuthContext";
 import { Form, Formik } from "formik";
 import useFetch from "lib/useFetch";
 import { useTranslations } from "use-intl";
-import { StatusViewMode } from "types/prisma";
+import { StatusViewMode, TableActionsAlignment } from "@snailycad/types";
 import { Select } from "components/form/Select";
 
 const LABELS = {
   [StatusViewMode.DOT_COLOR]: "Dot color",
   [StatusViewMode.FULL_ROW_COLOR]: "Full row color",
+};
+
+const TABLE_ALIGNMENT_LABELS = {
+  [TableActionsAlignment.NONE]: "None",
+  [TableActionsAlignment.LEFT]: "Left",
+  [TableActionsAlignment.RIGHT]: "Right",
 };
 
 export function AppearanceTab() {
@@ -21,9 +26,14 @@ export function AppearanceTab() {
   const { execute, state } = useFetch();
   const common = useTranslations("Common");
 
+  if (!user) {
+    return null;
+  }
+
   const INITIAL_VALUES = {
-    isDarkTheme: user?.isDarkTheme ?? true,
-    statusViewMode: user?.statusViewMode ?? StatusViewMode.DOT_COLOR,
+    isDarkTheme: user.isDarkTheme ?? true,
+    statusViewMode: user.statusViewMode ?? StatusViewMode.DOT_COLOR,
+    tableActionsAlignment: user.tableActionsAlignment,
   };
 
   async function onSubmit(data: typeof INITIAL_VALUES) {
@@ -38,7 +48,7 @@ export function AppearanceTab() {
   }
 
   return (
-    <Tab.Panel>
+    <TabsContent aria-label={t("appearanceSettings")} value="appearanceSettings">
       <h3 className="text-2xl font-semibold">{t("appearanceSettings")}</h3>
       <Formik onSubmit={onSubmit} initialValues={INITIAL_VALUES}>
         {({ handleChange, values, errors }) => (
@@ -59,12 +69,24 @@ export function AppearanceTab() {
               />
             </FormField>
 
+            <FormField errorMessage={errors.tableActionsAlignment} label="Table Actions Alignment">
+              <Select
+                values={Object.values(TableActionsAlignment).map((v) => ({
+                  value: v,
+                  label: TABLE_ALIGNMENT_LABELS[v],
+                }))}
+                value={values.tableActionsAlignment}
+                onChange={handleChange}
+                name="tableActionsAlignment"
+              />
+            </FormField>
+
             <Button type="submit" disabled={state === "loading"}>
               {common("save")}
             </Button>
           </Form>
         )}
       </Formik>
-    </Tab.Panel>
+    </TabsContent>
   );
 }

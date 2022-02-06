@@ -4,11 +4,10 @@ import Link from "next/link";
 import { getSessionUser } from "lib/auth";
 import { getTranslations } from "lib/getTranslation";
 import type { GetServerSideProps } from "next";
-import { User, WhitelistStatus } from "types/prisma";
+import { User, WhitelistStatus } from "@snailycad/types";
 import { AdminLayout } from "components/admin/AdminLayout";
 import { requestAll, yesOrNoText } from "lib/utils";
-import { TabList } from "components/shared/TabList";
-import { Tab } from "@headlessui/react";
+import { TabList, TabsContent } from "components/shared/TabList";
 import { PendingUsersTab } from "components/admin/manage/users/PendingUsersTab";
 import { Button } from "components/Button";
 import { Input } from "components/form/inputs/Input";
@@ -32,7 +31,10 @@ export default function ManageUsers({ users: data }: Props) {
     setUsers(data);
   }, [data]);
 
-  const tabs = [`${t("allUsers")} (${users.length})`, `${t("pendingUsers")} (${pending.length})`];
+  const tabs = [
+    { name: `${t("allUsers")} (${users.length})`, value: "allUsers" },
+    { name: `${t("pendingUsers")} (${pending.length})`, value: "pendingUsers" },
+  ];
 
   return (
     <AdminLayout>
@@ -45,7 +47,7 @@ export default function ManageUsers({ users: data }: Props) {
       </FormField>
 
       <TabList tabs={tabs}>
-        <Tab.Panel className="mt-5">
+        <TabsContent aria-label={t("allUsers")} value="allUsers" className="mt-5">
           <Table
             filter={search}
             data={users.map((user) => ({
@@ -73,7 +75,7 @@ export default function ManageUsers({ users: data }: Props) {
               { Header: common("actions"), accessor: "actions" },
             ]}
           />
-        </Tab.Panel>
+        </TabsContent>
 
         <PendingUsersTab setUsers={setUsers} users={pending} search={search} />
       </TabList>

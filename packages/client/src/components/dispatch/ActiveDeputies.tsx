@@ -9,7 +9,7 @@ import { useActiveDeputies } from "hooks/realtime/useActiveDeputies";
 import { useRouter } from "next/router";
 import { formatUnitDivisions, makeUnitName } from "lib/utils";
 import { useGenerateCallsign } from "hooks/useGenerateCallsign";
-import { StatusViewMode } from "types/prisma";
+import { StatusViewMode } from "@snailycad/types";
 import { useAuth } from "context/AuthContext";
 import { useImageUrl } from "hooks/useImageUrl";
 import { Table } from "components/shared/Table";
@@ -45,13 +45,14 @@ export function ActiveDeputies() {
         <p className="px-4 py-2">{t("Ems.noActiveDeputies")}</p>
       ) : (
         <Table
+          isWithinCard
           containerProps={{ className: "mb-3 px-4" }}
           data={activeDeputies.map((deputy) => {
             const color = deputy.status?.color;
             const useDot = user?.statusViewMode === StatusViewMode.DOT_COLOR;
 
             return {
-              rowProps: { style: { background: !useDot ? color : undefined } },
+              rowProps: { style: { background: !useDot ? color ?? undefined : undefined } },
               deputy: (
                 <span className="flex items-center capitalize">
                   {deputy.imageId ? (

@@ -3,11 +3,12 @@ import { useFeatureEnabled } from "hooks/useFeatureEnabled";
 import { classNames } from "lib/classNames";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { rank, valueType } from "types/prisma";
+import { Rank, ValueType } from "@snailycad/types";
 import { useTranslations } from "use-intl";
 
 const management = ["USERS", "CITIZENS", "UNITS", "BUSINESSES", "EXPUNGEMENT_REQUESTS"] as const;
-const types = Object.values(valueType).map((v) => v.replace("_", "-"));
+const imports = ["CITIZENS", "VEHICLES", "WEAPONS"] as const;
+const types = Object.values(ValueType).map((v) => v.replace("_", "-"));
 
 export function AdminSidebar() {
   const t = useTranslations();
@@ -18,6 +19,10 @@ export function AdminSidebar() {
 
   function isMActive(path: string) {
     return router.pathname === path;
+  }
+
+  function isImportActive(type: string) {
+    return router.asPath.includes("import") && router.asPath.endsWith(type.toLowerCase());
   }
 
   function isValueActive(type: string) {
@@ -41,7 +46,7 @@ export function AdminSidebar() {
               (!BUSINESS && type === "BUSINESSES") ||
               (!COURTHOUSE && type === "EXPUNGEMENT_REQUESTS") ? null : (
                 <SidebarItem
-                  disabled={type !== "UNITS" && user?.rank === "USER"}
+                  disabled={type !== "UNITS" && user?.rank === Rank.USER}
                   key={type}
                   isActive={isMActive(`/admin/manage/${makeType(type)}`)}
                   href={`/admin/manage/${makeType(type)}`}
@@ -50,7 +55,7 @@ export function AdminSidebar() {
               ),
             )}
 
-            {user?.rank === rank.OWNER ? (
+            {user?.rank === Rank.OWNER ? (
               <SidebarItem
                 isActive={isMActive("/admin/manage/cad-settings")}
                 href="/admin/manage/cad-settings"
@@ -60,7 +65,25 @@ export function AdminSidebar() {
           </ul>
         </section>
 
-        {user?.rank !== "USER" ? (
+        {user?.rank !== Rank.USER ? (
+          <section className="mt-3">
+            <h1 className="px-3 text-2xl font-semibold dark:text-white">{man("import")}</h1>
+            <ul className="flex flex-col space-y-1.5 mt-3">
+              {imports.map((type) =>
+                type === "WEAPONS" && !WEAPON_REGISTRATION ? null : (
+                  <SidebarItem
+                    key={type}
+                    isActive={isImportActive(type)}
+                    href={`/admin/import/${type.toLowerCase()}`}
+                    text={man(`IMPORT_${type}`)}
+                  />
+                ),
+              )}
+            </ul>
+          </section>
+        ) : null}
+
+        {user?.rank !== Rank.USER ? (
           <section className="mt-3">
             <h1 className="px-3 text-2xl font-semibold dark:text-white">{t("Values.values")}</h1>
             <ul className="flex flex-col space-y-1.5 mt-3">

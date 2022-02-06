@@ -9,7 +9,7 @@ import { useTranslations } from "use-intl";
 import { Title } from "components/shared/Title";
 import { TabList } from "components/shared/TabList";
 import { AllUnitsTab } from "components/admin/manage/units/AllUnitsTab";
-import { WhitelistStatus } from "types/prisma";
+import { WhitelistStatus } from "@snailycad/types";
 
 const DepartmentWhitelistingTab = dynamic(
   async () =>
@@ -38,10 +38,13 @@ export default function SupervisorPanelPage({ units }: Props) {
 
       <TabList
         tabs={[
-          t("Management.allUnits"),
-          t
-            .rich("Management.departmentWhitelisting", { length: pendingOfficers.length })
-            .toString(),
+          { name: t("Management.allUnits"), value: "allUnits" },
+          {
+            name: t
+              .rich("Management.departmentWhitelisting", { length: pendingOfficers.length })
+              .toString(),
+            value: "departmentWhitelisting",
+          },
         ]}
       >
         <AllUnitsTab units={units} />

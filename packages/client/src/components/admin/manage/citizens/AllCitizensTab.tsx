@@ -4,9 +4,9 @@ import { useModal } from "context/ModalContext";
 import useFetch from "lib/useFetch";
 import { Loader } from "components/Loader";
 import { ModalIds } from "types/ModalIds";
-import { Tab } from "@headlessui/react";
+import { TabsContent } from "components/shared/TabList";
 import { Button } from "components/Button";
-import type { Citizen, User } from "types/prisma";
+import type { Citizen, User } from "@snailycad/types";
 import { useTranslations } from "next-intl";
 import { FormField } from "components/form/FormField";
 import { Input } from "components/form/inputs/Input";
@@ -65,7 +65,7 @@ export function AllCitizensTab({ citizens, setCitizens }: Props) {
   }
 
   return (
-    <Tab.Panel>
+    <TabsContent value="allCitizens">
       {citizens.length <= 0 ? (
         <p className="mt-5">{t("noCitizens")}</p>
       ) : (
@@ -181,7 +181,7 @@ export function AllCitizensTab({ citizens, setCitizens }: Props) {
           </Button>
         </div>
       </Modal>
-    </Tab.Panel>
+    </TabsContent>
   );
 }
 

@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Button } from "components/Button";
-import type { Weapon } from "types/prisma";
+import type { Weapon } from "@snailycad/types";
 import { ModalIds } from "types/ModalIds";
 import { useModal } from "context/ModalContext";
 import { RegisterWeaponModal } from "./RegisterWeaponModal";
@@ -20,6 +20,10 @@ export function WeaponsCard(props: { weapons: Weapon[] }) {
 
   const [weapons, setWeapons] = React.useState<Weapon[]>(props.weapons);
   const [tempWeapon, setTempWeapon] = React.useState<Weapon | null>(null);
+
+  React.useEffect(() => {
+    setWeapons(props.weapons);
+  }, [props.weapons]);
 
   async function handleDelete() {
     if (!tempWeapon) return;
@@ -65,6 +69,7 @@ export function WeaponsCard(props: { weapons: Weapon[] }) {
           <p className="text-gray-600 dark:text-gray-400">{t("noWeapons")}</p>
         ) : (
           <Table
+            isWithinCard
             data={weapons.map((weapon) => ({
               model: weapon.model.value.value,
               registrationStatus: weapon.registrationStatus.value,

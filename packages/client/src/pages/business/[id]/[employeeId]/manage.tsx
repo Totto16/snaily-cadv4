@@ -8,7 +8,7 @@ import { getTranslations } from "lib/getTranslation";
 import { FullBusiness, FullEmployee, useBusinessState } from "state/businessState";
 import { useTranslations } from "use-intl";
 import { TabList } from "components/shared/TabList";
-import { EmployeeAsEnum } from "types/prisma";
+import { EmployeeAsEnum } from "@snailycad/types";
 import dynamic from "next/dynamic";
 import { requestAll } from "lib/utils";
 import { Title } from "components/shared/Title";
@@ -54,16 +54,22 @@ export default function BusinessId(props: Props) {
     );
   }
 
-  const tabsObj = {
-    [t("allEmployees")]: true,
-    [t("businessVehicles")]: true,
-    [t("business")]: currentEmployee.role.as === EmployeeAsEnum.OWNER,
-    [t("pendingEmployees")]: currentBusiness.whitelisted,
-  };
+  const tabsObj = [
+    { enabled: true, name: t("allEmployees"), value: "allEmployees" },
+    { enabled: true, name: t("businessVehicles"), value: "businessVehicles" },
+    {
+      enabled: currentEmployee.role.as === EmployeeAsEnum.OWNER,
+      name: t("business"),
+      value: "business",
+    },
+    {
+      enabled: currentBusiness.whitelisted,
+      name: t("pendingEmployees"),
+      value: "pendingEmployees",
+    },
+  ];
 
-  const tabs = Object.entries(tabsObj)
-    .map(([k, v]) => (v === true ? k : undefined))
-    .filter(Boolean) as string[];
+  const tabs = tabsObj.filter((v) => v.enabled);
 
   return (
     <Layout className="dark:text-white">

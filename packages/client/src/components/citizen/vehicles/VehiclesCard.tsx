@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useTranslations } from "use-intl";
 import { Button } from "components/Button";
-import type { RegisteredVehicle } from "types/prisma";
+import type { RegisteredVehicle } from "@snailycad/types";
 import { RegisterVehicleModal } from "./RegisterVehicleModal";
 import { ModalIds } from "types/ModalIds";
 import { useModal } from "context/ModalContext";
@@ -18,6 +18,10 @@ export function VehiclesCard(props: { vehicles: RegisteredVehicle[] }) {
 
   const [vehicles, setVehicles] = React.useState<RegisteredVehicle[]>(props.vehicles);
   const [tempVehicle, setTempVehicle] = React.useState<RegisteredVehicle | null>(null);
+
+  React.useEffect(() => {
+    setVehicles(props.vehicles);
+  }, [props.vehicles]);
 
   async function handleDelete() {
     if (!tempVehicle) return;
@@ -58,6 +62,7 @@ export function VehiclesCard(props: { vehicles: RegisteredVehicle[] }) {
           <p className="text-gray-600 dark:text-gray-400">{t("noVehicles")}</p>
         ) : (
           <Table
+            isWithinCard
             data={vehicles.map((vehicle) => ({
               plate: vehicle.plate,
               model: vehicle.model.value.value,

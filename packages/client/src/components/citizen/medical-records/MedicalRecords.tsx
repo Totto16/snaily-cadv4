@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useTranslations } from "use-intl";
 import { Button } from "components/Button";
-import type { MedicalRecord } from "types/prisma";
+import type { MedicalRecord } from "@snailycad/types";
 import { ModalIds } from "types/ModalIds";
 import { useModal } from "context/ModalContext";
 import { ManageMedicalRecordsModal } from "./ManageMedicalRecordsModal";
@@ -57,6 +57,7 @@ export function MedicalRecords(props: { medicalRecords: MedicalRecord[] }) {
           <p className="text-gray-600 dark:text-gray-400">{t("noMedicalRecords")}</p>
         ) : (
           <Table
+            isWithinCard
             data={medicalRecords.map((record) => ({
               diseases: record.type,
               bloodGroup: record.bloodGroup?.value ?? common("none"),
