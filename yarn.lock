@@ -147,31 +147,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@casper124578/use-socket.io@npm:4.0.0":
-  version: 4.0.0
-  resolution: "@casper124578/use-socket.io@npm:4.0.0"
+"@casper124578/use-socket.io@npm:4.1.0":
+  version: 4.1.0
+  resolution: "@casper124578/use-socket.io@npm:4.1.0"
   dependencies:
-    react: 17.0.2
+    react: 18.0.0
     socket.io-client: 4.4.1
-    tslib: ^2.3.1
-    zustand: ^3.7.1
+    zustand: ^3.7.2
   peerDependencies:
     react: ">=17"
     socket.io-client: ">=4.2"
-  checksum: 19ab4c08f2f5b960a46993674667f16cbacd288269417c5f0fe1f3346278e7ed6ad917b658f351d1f92165de2fb64fea04df8582428b671bb0ac34ae5af02dc0
+  checksum: 06a2bb0f2191700c29e240477649cc96ff0ac029ae8ed78d455323cd358675c6baba4843cdcdf446aad85b352a56d5db29efc90ae5b4ca9bc648e267517c77fa
   languageName: node
   linkType: hard
 
-"@casper124578/useful@npm:^1.5.6":
-  version: 1.5.6
-  resolution: "@casper124578/useful@npm:1.5.6"
+"@casper124578/useful@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "@casper124578/useful@npm:1.6.0"
   dependencies:
-    react: ^17.0.2
-    react-dom: ^17.0.2
+    react: ">=17.0.2"
+    react-dom: ">=17.0.2"
   peerDependencies:
-    react: ^17.0.2
-    react-dom: ^17.0.2
-  checksum: 670214c4031494e4b14115855a2bd5de79d1555dd9e6e2290f68d32d0541b13661878d62d13351b219fca96c0bdd88eca88d3998ea8b23892a99b8c562cf0e1e
+    react: ">=17.0.2"
+    react-dom: ">=17.0.2"
+  checksum: a3b8f6e8ca7e1408eafd6f341355182ac592da12a8885384cf56a749441a1aa5b7990e980d93b83cce213ddad3600c556e0a128de88f04a47d407c0814e8f910
   languageName: node
   linkType: hard
 
@@ -1457,8 +1456,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@snailycad/client@workspace:packages/client"
   dependencies:
-    "@casper124578/use-socket.io": 4.0.0
-    "@casper124578/useful": ^1.5.6
+    "@casper124578/use-socket.io": 4.1.0
+    "@casper124578/useful": ^1.6.0
     "@headlessui/react": ^1.5.0
     "@radix-ui/react-accordion": ^0.1.6
     "@radix-ui/react-context-menu": ^0.1.6
@@ -8921,20 +8920,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react-dom@npm:17.0.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.2
-  peerDependencies:
-    react: 17.0.2
-  checksum: 1c1eaa3bca7c7228d24b70932e3d7c99e70d1d04e13bb0843bbf321582bc25d7961d6b8a6978a58a598af2af496d1cedcfb1bf65f6b0960a0a8161cb8dab743c
-  languageName: node
-  linkType: hard
-
-"react-dom@npm:^18.0.0":
+"react-dom@npm:>=17.0.2, react-dom@npm:^18.0.0":
   version: 18.0.0
   resolution: "react-dom@npm:18.0.0"
   dependencies:
@@ -9129,17 +9115,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:17.0.2, react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
-  languageName: node
-  linkType: hard
-
-"react@npm:^18.0.0":
+"react@npm:18.0.0, react@npm:>=17.0.2, react@npm:^18.0.0":
   version: 18.0.0
   resolution: "react@npm:18.0.0"
   dependencies:
@@ -9498,16 +9474,6 @@ __metadata:
   bin:
     sass: sass.js
   checksum: 43738cc83a3921731456f769aba190277f0620f8b80c14426ab098be9ab8dc8465957f5bf2edbcffda189edb3024ed83dee2cb8cd580459ca4984a9fc88c18f7
-  languageName: node
-  linkType: hard
-
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
-  dependencies:
-    loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
   languageName: node
   linkType: hard
 
@@ -11491,18 +11457,6 @@ __metadata:
   version: 3.14.4
   resolution: "zod@npm:3.14.4"
   checksum: 30e75dc1e4e1d6ce5695750d1906b6b918779b8aa446f5db77eb2b8344d08f29344b5d0115034a9e695fd5a627d23c5c03d67efe58fe16fbb91dee9dc08761bc
-  languageName: node
-  linkType: hard
-
-"zustand@npm:^3.7.1":
-  version: 3.7.1
-  resolution: "zustand@npm:3.7.1"
-  peerDependencies:
-    react: ">=16.8"
-  peerDependenciesMeta:
-    react:
-      optional: true
-  checksum: 987a2cee95e0fd085c3556d21289a34bb1e9727155837c480617dee839453858523d6321abf3b18de4867fb07d14f5ff7abf9a8404357baa7ec73dffec6dd4f7
   languageName: node
   linkType: hard
 
