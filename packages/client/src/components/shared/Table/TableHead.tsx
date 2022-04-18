@@ -43,6 +43,7 @@ export function TableHead<T extends object, RowProps extends object>({
                   isActions ? `${dir} z-10` : "sticky",
                 )}
               >
+                {/* @ts-expect-error incorrect error */}
                 <span className="flex items-center gap-3">
                   {column.render("Header")}
                   {column.isSorted ? (

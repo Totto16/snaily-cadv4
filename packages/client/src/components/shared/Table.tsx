@@ -132,6 +132,7 @@ export function Table<T extends object, RowProps extends object>(props: TablePro
           tableActionsAlignment={tableActionsAlignment}
           headerGroups={headerGroups}
         />
+        {/* @ts-expect-error see https://github.com/SortableJS/react-sortablejs/pull/234 */}
         <ReactSortable
           {...getTableBodyProps()}
           animation={200}

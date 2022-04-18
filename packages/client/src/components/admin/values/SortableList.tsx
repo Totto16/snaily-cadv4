@@ -35,6 +35,7 @@ export function SortableList({ values, search, setList, handleEdit, handleDelete
   }
 
   return (
+    // @ts-expect-error see https://github.com/SortableJS/react-sortablejs/pull/234
     <ReactSortable animation={200} className="mt-5" tag="ul" list={values} setList={checkMoved}>
       {sortValues(values)
         .filter((v) => handleFilter(v, search))

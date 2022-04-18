@@ -37,6 +37,7 @@ export function TableRow<T extends object, RP extends object>({
               isMove && "w-10",
             )}
           >
+            {/* @ts-expect-error bashing types, aaaaaahhh! */}
             {cell.render("Cell")}
           </td>
         );

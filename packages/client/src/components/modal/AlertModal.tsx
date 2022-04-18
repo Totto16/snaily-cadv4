@@ -7,7 +7,7 @@ import { Modal, ModalProps } from "./Modal";
 
 type Props = Pick<ModalProps, "title" | "className"> & {
   id: ModalIds;
-  description: string | React.ReactFragment;
+  description: React.ReactNode;
   state?: any;
   onDeleteClick(): void;
   onClose?(): void;
